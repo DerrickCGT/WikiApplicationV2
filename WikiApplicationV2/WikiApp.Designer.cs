@@ -32,10 +32,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.loadButton = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
-            this.sortButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.addButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
@@ -54,7 +52,6 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.structureRadioGroup.SuspendLayout();
@@ -72,9 +69,9 @@
             // 
             this.groupBox1.Controls.Add(this.saveButton);
             this.groupBox1.Controls.Add(this.loadButton);
-            this.groupBox1.Location = new System.Drawing.Point(377, 36);
+            this.groupBox1.Location = new System.Drawing.Point(377, 55);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(147, 53);
+            this.groupBox1.Size = new System.Drawing.Size(147, 43);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "File";
@@ -97,52 +94,32 @@
             this.loadButton.Text = "Load";
             this.loadButton.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.searchButton);
-            this.groupBox2.Controls.Add(this.sortButton);
-            this.groupBox2.Location = new System.Drawing.Point(377, 90);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(147, 53);
-            this.groupBox2.TabIndex = 24;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Search";
-            // 
             // searchTextBox
             // 
             this.searchTextBox.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.searchTextBox.Location = new System.Drawing.Point(377, 149);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(232, 20);
+            this.searchTextBox.Size = new System.Drawing.Size(157, 20);
             this.searchTextBox.TabIndex = 8;
             this.searchTextBox.Text = "Search Structure Name";
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(75, 19);
+            this.searchButton.Location = new System.Drawing.Point(540, 146);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(63, 23);
             this.searchButton.TabIndex = 9;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
             // 
-            // sortButton
-            // 
-            this.sortButton.Location = new System.Drawing.Point(6, 19);
-            this.sortButton.Name = "sortButton";
-            this.sortButton.Size = new System.Drawing.Size(63, 23);
-            this.sortButton.TabIndex = 21;
-            this.sortButton.Text = "Sort";
-            this.sortButton.UseVisualStyleBackColor = true;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.addButton);
             this.groupBox3.Controls.Add(this.editButton);
             this.groupBox3.Controls.Add(this.deleteButton);
-            this.groupBox3.Location = new System.Drawing.Point(530, 36);
+            this.groupBox3.Location = new System.Drawing.Point(377, 97);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(79, 107);
+            this.groupBox3.Size = new System.Drawing.Size(226, 43);
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Action";
@@ -155,10 +132,11 @@
             this.addButton.TabIndex = 1;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // editButton
             // 
-            this.editButton.Location = new System.Drawing.Point(10, 45);
+            this.editButton.Location = new System.Drawing.Point(79, 16);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(63, 23);
             this.editButton.TabIndex = 2;
@@ -167,7 +145,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(10, 78);
+            this.deleteButton.Location = new System.Drawing.Point(148, 16);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(63, 23);
             this.deleteButton.TabIndex = 3;
@@ -303,18 +281,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 468);
+            this.ClientSize = new System.Drawing.Size(807, 468);
+            this.Controls.Add(this.searchButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.listViewDisplay);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "WikiApp";
             this.Text = "WikiApp";
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -331,10 +308,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button loadButton;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.Button sortButton;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button editButton;

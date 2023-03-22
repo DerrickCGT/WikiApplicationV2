@@ -17,6 +17,49 @@ namespace WikiApplicationV2
             InitializeComponent();
         }
 
+        List<Information> wiki = new List<Information>();
 
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            Information addData = new Information();
+            addData.SetName(nameTextBox.Text);
+            addData.SetStructure(getStructureRadioButton());
+            addData.SetCategory(categoryComboBox.Text);
+            addData.SetDefinition(definitionTextBox.Text);
+            wiki.Add(addData);
+            displayListView();
+
+        }
+
+        private void displayListView()
+        {
+            listViewDisplay.Items.Clear();
+            wiki.Sort();
+            foreach (var item in wiki)
+            {
+                ListViewItem lvi = new ListViewItem(item.GetName());
+                lvi.SubItems.Add(item.GetStructure());
+                listViewDisplay.Items.Add(lvi);
+
+            }
+        }
+
+        private string getStructureRadioButton()
+        {
+            string rbStructure = "";
+            foreach(RadioButton rb in structureRadioGroup.Controls.OfType<RadioButton>())
+            {
+                if (rb.Checked)
+                {
+                    rbStructure = rb.Text;
+                    break;
+                }
+                else
+                {
+                    MessageBox.Show("Please select the structure type");
+                }
+            }
+            return rbStructure;
+        }
     }
 }
