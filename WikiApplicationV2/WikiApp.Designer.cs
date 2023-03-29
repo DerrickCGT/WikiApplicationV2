@@ -39,6 +39,7 @@
             this.editButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.definitionTextBox = new System.Windows.Forms.TextBox();
             this.structureRadioGroup = new System.Windows.Forms.GroupBox();
             this.linearButton = new System.Windows.Forms.RadioButton();
             this.nonLinearButton = new System.Windows.Forms.RadioButton();
@@ -46,7 +47,6 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.definitionTextBox = new System.Windows.Forms.TextBox();
             this.listViewDisplay = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -84,6 +84,7 @@
             this.saveButton.TabIndex = 5;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // loadButton
             // 
@@ -93,6 +94,7 @@
             this.loadButton.TabIndex = 6;
             this.loadButton.Text = "Load";
             this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
             // searchTextBox
             // 
@@ -111,6 +113,7 @@
             this.searchButton.TabIndex = 9;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // groupBox3
             // 
@@ -142,6 +145,7 @@
             this.editButton.TabIndex = 2;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // deleteButton
             // 
@@ -151,6 +155,7 @@
             this.deleteButton.TabIndex = 3;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // groupBox4
             // 
@@ -167,6 +172,14 @@
             this.groupBox4.TabIndex = 26;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Data Structure";
+            // 
+            // definitionTextBox
+            // 
+            this.definitionTextBox.Location = new System.Drawing.Point(12, 136);
+            this.definitionTextBox.Multiline = true;
+            this.definitionTextBox.Name = "definitionTextBox";
+            this.definitionTextBox.Size = new System.Drawing.Size(285, 241);
+            this.definitionTextBox.TabIndex = 32;
             // 
             // structureRadioGroup
             // 
@@ -216,6 +229,7 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(213, 20);
             this.nameTextBox.TabIndex = 27;
+            this.nameTextBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.nameTextBox_MouseDoubleClick);
             // 
             // label2
             // 
@@ -235,14 +249,6 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Name:";
             // 
-            // definitionTextBox
-            // 
-            this.definitionTextBox.Location = new System.Drawing.Point(12, 136);
-            this.definitionTextBox.Multiline = true;
-            this.definitionTextBox.Name = "definitionTextBox";
-            this.definitionTextBox.Size = new System.Drawing.Size(285, 241);
-            this.definitionTextBox.TabIndex = 32;
-            // 
             // listViewDisplay
             // 
             this.listViewDisplay.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -255,6 +261,7 @@
             this.listViewDisplay.TabIndex = 27;
             this.listViewDisplay.UseCompatibleStateImageBehavior = false;
             this.listViewDisplay.View = System.Windows.Forms.View.Details;
+            this.listViewDisplay.SelectedIndexChanged += new System.EventHandler(this.listViewDisplay_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
