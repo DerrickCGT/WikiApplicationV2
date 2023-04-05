@@ -12,7 +12,7 @@ using System.Windows.Forms;
 // name: Derrick Choong
 // Student ID: 30066568
 // Application: Wiki form to provide data structure definitions and categories.
-// Version 1.3: All completed and form close with same save method as save button
+// Version 1.3: Still have to optimize the code to shorter the code
 
 namespace WikiApplicationV2
 {
