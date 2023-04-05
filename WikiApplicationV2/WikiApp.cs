@@ -12,7 +12,7 @@ using System.Windows.Forms;
 // name: Derrick Choong
 // Student ID: 30066568
 // Application: Wiki form to provide data structure definitions and categories.
-// Version 1.2: 
+// Version 1.2: All completed and form closing autosave file with incremental numbering
 
 namespace WikiApplicationV2
 {
@@ -333,10 +333,21 @@ namespace WikiApplicationV2
         private void saveButton_Click(object sender, EventArgs e)
         {
             clearStatusStrip();
+            saveMethod();            
+        }
 
-            //create a new SaveFileDialog instance to prompt user for a filename and location to save file
+        //When form closed, Save Dialog box will opt user to save the file
+        private void WikiApp_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            saveMethod();
+        }
+
+        //Save method using a dialog box to opt user to select a file or rename a saved file using binary writer format.
+        private void saveMethod()
+        {
+
             SaveFileDialog saveFile = new SaveFileDialog();
-            saveFile.InitialDirectory = Application.StartupPath;    
+            saveFile.InitialDirectory = Application.StartupPath;
             saveFile.Filter = "Binary File (*.bin)|*.bin";
             saveFile.Title = "Save your bin file";
             if (saveFile.ShowDialog() == DialogResult.OK)
@@ -344,57 +355,30 @@ namespace WikiApplicationV2
                 try
                 {
                     string fileName = saveFile.FileName;
-                    saveMethod(fileName);                    
+                    //create a new FileStream to write to the file
+                    var stream = File.Open(fileName, FileMode.Create);
+
+                    //create a new BinaryWriter object to write binary data to the file
+                    // and ensure the file is closed when finished
+                    using (BinaryWriter bw = new BinaryWriter(stream, Encoding.UTF8, false))
+                    {
+                        foreach (var information in wiki)
+                        {
+                            bw.Write(information.GetName());
+                            bw.Write(information.GetCategory());
+                            bw.Write(information.GetStructure());
+                            bw.Write(information.GetDefinition());
+                        }
+                    }
                     statusStripInfo("File Saved", "Green");
                 }
-                catch(IOException)
+                catch (IOException)
                 {
                     MessageBox.Show("Could not save Wiki information", "Critical Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     statusStripInfo("Error", "Red");
                 }
-            }
-        }
-
-        private void saveMethod(string fileName)
-        {
-            //create a new FileStream to write to the file
-            var stream = File.Open(fileName, FileMode.Create);
-
-            //create a new BinaryWriter object to write binary data to the file
-            // and ensure the file is closed when finished
-            using (BinaryWriter bw = new BinaryWriter(stream, Encoding.UTF8, false))
-            {
-                foreach (var information in wiki)
-                {
-                    bw.Write(information.GetName());
-                    bw.Write(information.GetCategory());
-                    bw.Write(information.GetStructure());
-                    bw.Write(information.GetDefinition());
-                }
-            }
-        }
-
-        //Auto save file when form is closed, default file name Default Wiki Table with incremental number
-        private void WikiApp_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            string newfile = "";
-            for (int i = 0; i <= 100; i++)
-            {
-                string x = "Default Wiki Table_";
-                string y = i.ToString();
-                if (y.Length == 1)
-                {
-                    y = "0" + y;
-                }
-                
-                newfile = Application.StartupPath + "\\" + x + y + ".bin";
-                if (!File.Exists(newfile))
-                {
-                    break;
-                }
-            }
-            saveMethod(newfile);
-        }
+            }                
+        }        
 
         //Load file to add all data to Wiki List 
         private void loadButton_Click(object sender, EventArgs e)
