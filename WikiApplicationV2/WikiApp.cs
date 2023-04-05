@@ -12,7 +12,7 @@ using System.Windows.Forms;
 // name: Derrick Choong
 // Student ID: 30066568
 // Application: Wiki form to provide data structure definitions and categories.
-// Version 1.2: All completed and form closing autosave file with incremental numbering
+// Version 1.3: All completed and form close with same save method as save button
 
 namespace WikiApplicationV2
 {
@@ -39,18 +39,27 @@ namespace WikiApplicationV2
 
             //Check if the name is valid (not a duplicate)
             bool valid = validName(nameTextBox.Text);
+
             if (valid)
             {
-                //create an object and add object to the list
-                Information addData = new Information();
-                addData.SetName(nameTextBox.Text);
-                addData.SetStructure(getStructureRadioButton());
-                addData.SetCategory(categoryComboBox.Text);
-                addData.SetDefinition(definitionTextBox.Text);
-                wiki.Add(addData);
-                displayListView();
-                statusStripInfo("Data Added", "green");
-                clearDisplay();
+                if (!string.IsNullOrEmpty(nameTextBox.Text))
+                    {
+                    //create an object and add object to the list
+                    Information addData = new Information();
+                    addData.SetName(nameTextBox.Text);
+                    addData.SetStructure(getStructureRadioButton());
+                    addData.SetCategory(categoryComboBox.Text);
+                    addData.SetDefinition(definitionTextBox.Text);
+                    wiki.Add(addData);
+                    displayListView();
+                    statusStripInfo("Data Added", "green");
+                    clearDisplay();
+                }
+                else
+                {
+                    MessageBox.Show("Error! Null Input on Structure Name.");
+                    statusStripInfo("Error", "red");
+                }
             }
             else
             {
@@ -214,6 +223,7 @@ namespace WikiApplicationV2
                 }
                 statusStripInfo("Data Deleted", "Green");
                 displayListView();
+                clearDisplay();
             }           
         }
         #endregion
@@ -254,6 +264,7 @@ namespace WikiApplicationV2
                     }
                     statusStripInfo("Data Edited", "Green");
                     displayListView();
+                    clearDisplay();
                 }
             }
         }
