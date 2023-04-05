@@ -1,69 +1,67 @@
 ﻿using System;
 
-// 6.1 Create a separate class file to hold the four data items of the Data Structure
-// (use the Data Structure Matrix as a guide). Use private properties for the fields
+// 6.1 Create a separate class file to hold the four data items of the Data structure
+// (use the Data structure Matrix as a guide). Use private properties for the fields
 // which must be of type “string”. The class file must have separate setters and getters,
-// add an appropriate IComparable for the Name attribute. Save the class as “Information.cs”.
+// add an appropriate IComparable for the name attribute. Save the class as “Information.cs”.
 
 namespace WikiApplicationV2
 {
     internal class Information : IComparable<Information>
     {
 
-        private string Name;
-        private string Category;
-        private string Structure;
-        private string Definition;
+        private string name;
+        private string category;
+        private string structure;
+        private string definition;
         
+        //Default Constructor
         public Information() { }
 
         public void SetName(string dataName)
         {
-            Name = dataName;
+            name = dataName;
         }
 
-        public string ISBN
-        {
-            get; set;
-        }
-
+        //Assessor Methods
         public string GetName()
         { 
-            return Name; 
+            return name; 
         }
 
         public void SetCategory(string dataCategory)
         {
-            Category = dataCategory;
+            category = dataCategory;
         }
 
         public string GetCategory() 
         { 
-            return Category; 
+            return category; 
         }
 
         public void SetStructure(string dataStructure)
         {
-            Structure = dataStructure;
+            structure = dataStructure;
         }
 
         public string GetStructure()
         {
-            return Structure;   
+            return structure;   
 
         }
         public void SetDefinition(string dataDefinition)
         {
-            Definition = dataDefinition;
+            definition = dataDefinition;
         }
         public string GetDefinition() 
         { 
-            return Definition; 
+            return definition; 
         }
 
+        //
         public int CompareTo(Information compareInfo)
         {
-            return Name.CompareTo(compareInfo.Name);
+            return name.CompareTo(compareInfo.name);
         }
  
     }

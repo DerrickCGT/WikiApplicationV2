@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.saveButton = new System.Windows.Forms.Button();
@@ -51,10 +52,14 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label3 = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.structureRadioGroup.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // categoryComboBox
@@ -104,6 +109,9 @@
             this.searchTextBox.Size = new System.Drawing.Size(157, 20);
             this.searchTextBox.TabIndex = 8;
             this.searchTextBox.Text = "Search Structure Name";
+            this.searchTextBox.Click += new System.EventHandler(this.searchTextBox_Click);
+            this.searchTextBox.Enter += new System.EventHandler(this.searchTextBox_Enter_1);
+            this.searchTextBox.Leave += new System.EventHandler(this.searchTextBox_Leave);
             // 
             // searchButton
             // 
@@ -180,6 +188,7 @@
             this.definitionTextBox.Name = "definitionTextBox";
             this.definitionTextBox.Size = new System.Drawing.Size(285, 241);
             this.definitionTextBox.TabIndex = 32;
+            this.definitionTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.definitionTextBox_KeyPress);
             // 
             // structureRadioGroup
             // 
@@ -229,6 +238,8 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(213, 20);
             this.nameTextBox.TabIndex = 27;
+            this.toolTip1.SetToolTip(this.nameTextBox, "Double mouseclick to clear all textbox displays");
+            this.nameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nameTextBox_KeyPress);
             this.nameTextBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.nameTextBox_MouseDoubleClick);
             // 
             // label2
@@ -284,11 +295,27 @@
             this.label3.TabIndex = 28;
             this.label3.Text = "Wiki Application";
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 446);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(807, 22);
+            this.statusStrip1.TabIndex = 29;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // statusLabel1
+            // 
+            this.statusLabel1.Name = "statusLabel1";
+            this.statusLabel1.Size = new System.Drawing.Size(0, 17);
+            // 
             // WikiApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(807, 468);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.searchTextBox);
@@ -298,12 +325,15 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "WikiApp";
             this.Text = "WikiApp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WikiApp_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.structureRadioGroup.ResumeLayout(false);
             this.structureRadioGroup.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,6 +364,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel statusLabel1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
