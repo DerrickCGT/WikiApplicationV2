@@ -152,14 +152,16 @@ namespace WikiApplicationV2
             categoryComboBox.Items.Clear();
             if (File.Exists("categorylist.txt"))
             {
-                using (StreamReader sr = new StreamReader("categorylist.txt", Encoding.UTF8, false))
-                {
-                    string line;
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        categoryComboBox.Items.Add(line);
-                    }
-                }
+                //using (StreamReader sr = new StreamReader("categorylist.txt", Encoding.UTF8, false))
+                //{
+                //    string line;
+                //    while ((line = sr.ReadLine()) != null)
+                //    {
+                //        categoryComboBox.Items.Add(line);
+                //    }
+                //}
+                var lines = File.ReadAllLines("categorylist.txt", Encoding.UTF8);
+                categoryComboBox.Items.AddRange(lines);
             }
         }
         #endregion
@@ -480,7 +482,6 @@ namespace WikiApplicationV2
             if (searchTextBox.Text == "")
             {
                 searchTextBox.Text = "Search Structure Name";
-
                 searchTextBox.ForeColor = Color.Silver;
             }
         }
