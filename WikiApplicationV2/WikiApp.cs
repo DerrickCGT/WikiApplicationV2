@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 // name: Derrick Choong
 // Student ID: 30066568
 // Application: Wiki form to provide data structure definitions and categories.
-// Version 1.3: Still have to optimize the code to shorter the code
+// Version 2: Final version - optimize the code under combobox using addrange method
 
 namespace WikiApplicationV2
 {
@@ -27,7 +28,9 @@ namespace WikiApplicationV2
 
         //6.2 Create a global List<T> of type Information called Wiki.
         List<Information> wiki = new List<Information>();
-
+        static Stream myTraceTestFile = File.Create("TextTraceWrite.txt");
+        TextWriterTraceListener myTraceListener = new TextWriterTraceListener(myTraceTestFile);
+        
 
         #region "Add Button"
         //6.3 Create a button method to ADD a new item to the list.
@@ -172,11 +175,15 @@ namespace WikiApplicationV2
         //Use the built in List<T> method “Exists” to answer this requirement.
         private bool validName(string checkName)
         {
+            Trace.Listeners.Add(myTraceListener);
+            Trace.WriteLine("private bool valid(string check)");
+            
             if (wiki.Exists(duplicate => duplicate.GetName() == checkName))
             {
                 return false;
             }
             else { return true; }
+            
         }
         #endregion
 
@@ -352,7 +359,9 @@ namespace WikiApplicationV2
         //When form closed, Save Dialog box will opt user to save the file
         private void WikiApp_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Trace.WriteLine("Form closing");
             saveMethod();
+            Trace.Flush();
         }
 
         //Save method using a dialog box to opt user to select a file or rename a saved file using binary writer format.
